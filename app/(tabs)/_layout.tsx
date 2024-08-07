@@ -20,7 +20,6 @@ export default function TabLayout() {
         name="menu"
         options={{
           title: "Menu",
-          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "fast-food" : "fast-food-outline"}
