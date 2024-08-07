@@ -19,7 +19,7 @@ const { width: WIDTH_SCREEN } = Dimensions.get("window");
 
 export default function ProductListItem({ product }: ProductListItemProps) {
   return (
-    <Link href={"/product"} asChild>
+    <Link href={`/menu/${product.id}`} asChild>
       <Pressable style={styles.container}>
         <Image src={product.image!} style={styles.image} resizeMode="contain" />
         <Text style={styles.name}>{product.name}</Text>
