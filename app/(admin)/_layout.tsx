@@ -9,7 +9,6 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors.light.background,
         tabBarInactiveTintColor: "gainsboro",
-        headerShown: false,
         tabBarStyle: { backgroundColor: Colors.light.tint },
         tabBarHideOnKeyboard: true,
       }}
@@ -19,6 +18,7 @@ export default function TabLayout() {
         name="menu"
         options={{
           title: "Menu",
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "fast-food" : "fast-food-outline"}
@@ -28,9 +28,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="orders"
         options={{
           title: "Orders",
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "list" : "list-outline"}
