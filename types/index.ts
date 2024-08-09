@@ -42,3 +42,8 @@ export type OrderItem = {
   size: PizzaSize;
   quantity: number;
 };
+
+export type Profile = {
+  id: string;
+  group: string;
+};
