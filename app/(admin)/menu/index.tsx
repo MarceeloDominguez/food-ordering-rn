@@ -1,9 +1,25 @@
-import { FlatList, StyleSheet, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import ProductListItem from "@/components/ProductListItem";
-import products from "@/assets/data/products";
 import { Colors } from "@/constants/Colors";
+import { useProductList } from "@/api/products";
 
 export default function HomeScreen() {
+  const { error, data: products, isLoading } = useProductList();
+
+  if (isLoading) {
+    return <ActivityIndicator size={24} color="red" />;
+  }
+
+  if (error) {
+    return <Text>Failed to fetch products</Text>;
+  }
+
   return (
     <View style={styles.container}>
       <FlatList
