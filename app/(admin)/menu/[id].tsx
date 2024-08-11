@@ -5,21 +5,32 @@ import {
   StyleSheet,
   Dimensions,
   Pressable,
+  ActivityIndicator,
 } from "react-native";
 import React from "react";
 import { Link, Stack, useLocalSearchParams } from "expo-router";
-import products from "@/assets/data/products";
+//import products from "@/assets/data/products";
 import { Colors } from "@/constants/Colors";
 import { FontAwesome } from "@expo/vector-icons";
+import { useProduct } from "@/api/products";
+import { defaultPizzaImage } from "@/components/ProductListItem";
 
 const { width: WIDTH_SCREEN } = Dimensions.get("window");
 
 export default function ProductDetailsScreen() {
-  const { id } = useLocalSearchParams();
+  const { id: idString } = useLocalSearchParams();
+  const id = parseFloat(typeof idString === "string" ? idString : idString[0]);
+  const { data: product, error, isLoading } = useProduct(id);
 
-  const product = products.find((p) => p.id.toString() === id);
+  //const product = products.find((p) => p.id.toString() === id);
 
-  if (!product) return <Text>Product not found</Text>;
+  if (isLoading) {
+    return <ActivityIndicator size={24} color="red" />;
+  }
+
+  if (error) {
+    return <Text>Failed to fetch products</Text>;
+  }
 
   const productRoute = `/(admin)/menu/create?id=${id}` as `${string}:${string}`;
 
@@ -55,7 +66,7 @@ export default function ProductDetailsScreen() {
       />
 
       <Image
-        source={{ uri: product.image }}
+        source={{ uri: product.image || defaultPizzaImage }}
         style={styles.image}
         resizeMode="contain"
       />
