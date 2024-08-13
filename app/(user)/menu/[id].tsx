@@ -42,7 +42,7 @@ export default function ProductDetailsScreen() {
   }
 
   const addToCart = () => {
-    addItem(product, selectedSize);
+    addItem(product!, selectedSize);
     router.push("/cart");
   };
 
@@ -58,7 +58,7 @@ export default function ProductDetailsScreen() {
       />
 
       <Image
-        source={{ uri: product.image || defaultPizzaImage }}
+        source={{ uri: product?.image || defaultPizzaImage }}
         style={styles.image}
         resizeMode="contain"
       />
@@ -87,7 +87,7 @@ export default function ProductDetailsScreen() {
           </Pressable>
         ))}
       </View>
-      <Text style={styles.price}>${product.price}</Text>
+      <Text style={styles.price}>${product?.price}</Text>
       <Button text="Add to cart" onPress={addToCart} />
     </View>
   );

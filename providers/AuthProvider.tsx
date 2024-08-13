@@ -1,3 +1,4 @@
+import { Tables } from "@/database.types";
 import { supabase } from "@/lib/supabase";
 import { Profile } from "@/types";
 import { Session } from "@supabase/supabase-js";
@@ -11,7 +12,7 @@ import {
 
 type AuthData = {
   session: Session | null;
-  profile: any;
+  profile: Tables<"profiles"> | null;
   loading: boolean;
   isAdmin: boolean;
 };
@@ -25,7 +26,7 @@ const AuthContext = createContext<AuthData>({
 
 export default function AuthProvider({ children }: PropsWithChildren) {
   const [session, setSession] = useState<Session | null>(null);
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState<Tables<"profiles"> | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

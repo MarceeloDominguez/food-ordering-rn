@@ -58,7 +58,7 @@ export default function ProductDetailsScreen() {
       />
       <Stack.Screen
         options={{
-          title: product.name,
+          title: product?.name,
           headerShadowVisible: false,
           headerStyle: { backgroundColor: Colors.light.background },
           headerTitleAlign: "center",
@@ -66,13 +66,13 @@ export default function ProductDetailsScreen() {
       />
 
       <Image
-        source={{ uri: product.image || defaultPizzaImage }}
+        source={{ uri: product?.image || defaultPizzaImage }}
         style={styles.image}
         resizeMode="contain"
       />
 
-      <Text style={styles.name}>{product.name}</Text>
-      <Text style={styles.price}>${product.price}</Text>
+      <Text style={styles.name}>{product?.name}</Text>
+      <Text style={styles.price}>${product?.price}</Text>
     </View>
   );
 }

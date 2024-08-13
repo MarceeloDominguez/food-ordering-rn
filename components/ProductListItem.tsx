@@ -1,6 +1,6 @@
 import { Text, StyleSheet, Image, Dimensions, Pressable } from "react-native";
 import React from "react";
-import { Product } from "@/types";
+import { Product, Tables } from "@/types";
 import { Colors } from "@/constants/Colors";
 import { Link, useSegments } from "expo-router";
 
@@ -8,7 +8,8 @@ export const defaultPizzaImage =
   "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png";
 
 type ProductListItemProps = {
-  product: Product;
+  //product: Product;
+  product: Tables<"products">;
 };
 
 const { width: WIDTH_SCREEN } = Dimensions.get("window");
