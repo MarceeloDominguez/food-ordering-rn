@@ -6,7 +6,7 @@ import { Colors } from "@/constants/Colors";
 import Button from "@/components/Button";
 
 export default function CartScreen() {
-  const { items, total } = useCart();
+  const { items, total, checkout } = useCart();
 
   return (
     <View style={styles.container}>
@@ -18,7 +18,7 @@ export default function CartScreen() {
         showsVerticalScrollIndicator={false}
       />
       <Text style={styles.total}>Total: ${Math.round(total * 100) / 100}</Text>
-      <Button text="Checkout" />
+      <Button onPress={checkout} text="Checkout" />
     </View>
   );
 }

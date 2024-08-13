@@ -9,6 +9,9 @@ export type TablesInsert<T extends keyof Database["public"]["Tables"]> =
 export type TablesUpdate<T extends keyof Database["public"]["Tables"]> =
   Database["public"]["Tables"][T]["Update"];
 
+export type InsertTables<T extends keyof Database["public"]["Tables"]> =
+  Database["public"]["Tables"][T]["Insert"];
+
 export type Enums<T extends keyof Database["public"]["Enums"]> =
   Database["public"]["Enums"][T];
 
