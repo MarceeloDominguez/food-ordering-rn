@@ -16,6 +16,7 @@ import { useCart } from "@/providers/CartProvider";
 import { PizzaSize } from "@/types";
 import { useProduct } from "@/api/products";
 import { defaultPizzaImage } from "@/components/ProductListItem";
+import RemoteImage from "@/components/RemoteImage";
 
 const { width: WIDTH_SCREEN } = Dimensions.get("window");
 
@@ -57,8 +58,14 @@ export default function ProductDetailsScreen() {
         }}
       />
 
-      <Image
+      {/* <Image
         source={{ uri: product?.image || defaultPizzaImage }}
+        style={styles.image}
+        resizeMode="contain"
+      /> */}
+      <RemoteImage
+        path={product?.image}
+        fallback={defaultPizzaImage}
         style={styles.image}
         resizeMode="contain"
       />

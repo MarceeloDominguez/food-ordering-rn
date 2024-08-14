@@ -3,6 +3,7 @@ import React from "react";
 //import orders from "@/assets/data/orders";
 import OrderListItem from "@/components/OrderListItem";
 import { useAdminOrderList } from "@/api/orders";
+import { useInsertOrderSubscription } from "@/api/orders/subscription";
 
 export default function OrdersScreen() {
   const {
@@ -10,6 +11,8 @@ export default function OrdersScreen() {
     isLoading,
     error,
   } = useAdminOrderList({ archived: false });
+
+  useInsertOrderSubscription();
 
   if (isLoading) {
     return <ActivityIndicator />;

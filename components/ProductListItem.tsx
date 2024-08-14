@@ -3,6 +3,7 @@ import React from "react";
 import { Product, Tables } from "@/types";
 import { Colors } from "@/constants/Colors";
 import { Link, useSegments } from "expo-router";
+import RemoteImage from "./RemoteImage";
 
 export const defaultPizzaImage =
   "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png";
@@ -23,10 +24,16 @@ export default function ProductListItem({ product }: ProductListItemProps) {
   return (
     <Link href={productRoute} asChild>
       <Pressable style={styles.container}>
-        <Image
+        {/* <Image
           src={product.image || defaultPizzaImage}
           style={styles.image}
           resizeMode="contain"
+        /> */}
+        <RemoteImage
+          path={product.image}
+          style={styles.image}
+          resizeMode="contain"
+          fallback={defaultPizzaImage}
         />
         <Text style={styles.name}>{product.name}</Text>
         <Text style={styles.price}>${product.price}</Text>
