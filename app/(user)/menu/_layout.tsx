@@ -4,7 +4,7 @@ import { Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 
-export default function _layout() {
+export default function MenuStack() {
   return (
     <Stack>
       <Stack.Screen

@@ -4,7 +4,7 @@ import { Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 
-export default function _layout() {
+export default function MenuStack() {
   const productRoute = `/(admin)/menu/create` as `${string}:${string}`;
 
   return (

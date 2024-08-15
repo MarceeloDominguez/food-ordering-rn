@@ -5,11 +5,11 @@ import { Link, Redirect } from "expo-router";
 import { useAuth } from "@/providers/AuthProvider";
 import { supabase } from "@/lib/supabase";
 
-export default function index() {
+export default function Index() {
   const { session, loading, isAdmin } = useAuth();
 
   if (loading) {
-    return <ActivityIndicator size={24} color="red" />;
+    return <ActivityIndicator size={24} color="green" />;
   }
 
   if (!session) {
@@ -22,9 +22,9 @@ export default function index() {
 
   return (
     <View style={{ flex: 1, justifyContent: "center", padding: 10 }}>
-      <Link href={"/(user)"} asChild>
+      {/* <Link href={"/(user)"} asChild>
         <Button text="User" />
-      </Link>
+      </Link> */}
       <Link href={"/(admin)"} asChild>
         <Button text="Admin" />
       </Link>
