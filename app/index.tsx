@@ -6,7 +6,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { supabase } from "@/lib/supabase";
 
 export default function Index() {
-  const { session, loading, isAdmin } = useAuth();
+  const { session, loading, isAdmin, profile } = useAuth();
 
   if (loading) {
     return <ActivityIndicator size={24} color="green" />;
@@ -14,6 +14,10 @@ export default function Index() {
 
   if (!session) {
     return <Redirect href={"/sign-in"} />;
+  }
+
+  if (!profile) {
+    return <ActivityIndicator size={24} color="orange" />;
   }
 
   if (!isAdmin) {
